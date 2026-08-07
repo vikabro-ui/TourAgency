@@ -1,0 +1,78 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "TourAgency",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "TourAgency::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-TourAgency-Debug-5634a372c19c1178bed9.json",
+					"name" : "TourAgency",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "TourAgency_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-TourAgency_autogen-Debug-93a3aeba26115ea0b44a.json",
+					"name" : "TourAgency_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "TourAgency_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-TourAgency_autogen_timestamp_deps-Debug-296472eb028f24288e9e.json",
+					"name" : "TourAgency_autogen_timestamp_deps",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "C:/Users/baras/OneDrive/Desktop/TourAgency/TourAgency/build/Desktop_Qt_6_11_1_MinGW_64_bit-Debug",
+		"source" : "C:/Users/baras/OneDrive/Desktop/TourAgency/TourAgency"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 7
+	}
+}
