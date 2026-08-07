@@ -47,7 +47,8 @@ private:
     QLabel* userStatusLabel;
     bool validateName(const QString& name);
     bool validatePhone(const QString& phone);
-
+    bool validateEmail(const QString& email);
+    bool validatePassport(const QString& passport);
     //page 1
     QLabel* clientIdLabel;
     QLabel* clientSurnameLabel;

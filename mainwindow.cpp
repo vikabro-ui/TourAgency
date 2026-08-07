@@ -198,17 +198,18 @@ void MainWindow::editClientInfo()
     layout->addSpacing(10);
 
     QLineEdit* surname = new QLineEdit(QString::fromStdString(client.getSurname()));
-    surname->setPlaceholderText("Фамилия");
+    surname->setPlaceholderText("Фамилия*");
     QLineEdit* name = new QLineEdit(QString::fromStdString(client.getName()));
-    name->setPlaceholderText("Имя");
+    name->setPlaceholderText("Имя*");
     QLineEdit* patronymic = new QLineEdit(QString::fromStdString(client.getPatronymic()));
-    patronymic->setPlaceholderText("Отчество");
+    patronymic->setPlaceholderText("Отчество*");
     QLineEdit* phone = new QLineEdit(QString::fromStdString(client.getPhone()));
-    phoneEdit->setPlaceholderText("Телефон");
+    phone->setPlaceholderText("Телефон*");
     QLineEdit* email = new QLineEdit(QString::fromStdString(client.getEmail()));
-    email->setPlaceholderText("Email");
+    email->setPlaceholderText("Email*");
     QLineEdit* passport = new QLineEdit(QString::fromStdString(client.getPassport()));
-    passport->setPlaceholderText("Паспорт");
+    passport->setPlaceholderText("Паспортные данные*");
+
     layout->addWidget(surname);
     layout->addWidget(name);
     layout->addWidget(patronymic);
@@ -233,22 +234,64 @@ void MainWindow::editClientInfo()
 
          if (!validateName(surname->text()))
          {
-             QMessageBox::warning(this, "Ошибка", "Фамилия должна содержать только буквы!");
+             QMessageBox::warning(
+                 this,
+                 "Ошибка",
+                 "Фамилия должна содержать только буквы!"
+                 );
              return;
          }
 
          if (!validateName(name->text()))
          {
-             QMessageBox::warning(this, "Ошибка", "Имя должно содержать только буквы!");
+             QMessageBox::warning(
+                 this,
+                 "Ошибка",
+                 "Имя должно содержать только буквы!"
+                 );
+             return;
+         }
+
+         if (!validateName(patronymic->text()))
+         {
+             QMessageBox::warning(
+                 this,
+                 "Ошибка",
+                 "Отчество должно содержать только буквы!"
+                 );
              return;
          }
 
          if (!validatePhone(phone->text()))
          {
-             QMessageBox::warning(this, "Ошибка",
-                                  "Введите корректный номер телефона!\n"
-                                  "Допустимы только цифры, +, -, пробелы и скобки.\n"
-                                  "Минимум 10 цифр.");
+             QMessageBox::warning(
+                 this,
+                 "Ошибка",
+                 "Введите корректный номер телефона!\n"
+                 "Минимум 10 цифр."
+                 );
+             return;
+         }
+
+         if (!validateEmail(email->text()))
+         {
+             QMessageBox::warning(
+                 this,
+                 "Ошибка",
+                 "Введите корректный email!\n"
+                 "Пример: user@mail.ru"
+                 );
+             return;
+         }
+
+         if (!validatePassport(passport->text()))
+         {
+             QMessageBox::warning(
+                 this,
+                 "Ошибка",
+                 "Паспортные данные должны содержать 8-10 символов\n"
+                 "Только цифры и буквы."
+                 );
              return;
          }
          client.setSurname(surname->text().toStdString());
@@ -302,7 +345,15 @@ void MainWindow::onLogin()
         QMessageBox::warning(this, "Ошибка", "Введите номер телефона!");
         return;
     }
-
+    if (!validatePhone(phone)) {
+        QMessageBox::warning(
+            this,
+            "Ошибка",
+            "Введите корректный номер телефона!\n"
+            "Минимум 10 цифр."
+            );
+        return;
+    }
     int index=agency->findClientByPhone(phone.toStdString());
     if(index==-1)
     {
@@ -333,16 +384,18 @@ void MainWindow::onRegister()
     title->setAlignment(Qt::AlignCenter);
     layout->addWidget(title);
     layout->addSpacing(10);
-    QLineEdit *surname=new QLineEdit;
+    QLineEdit *surname = new QLineEdit;
     surname->setPlaceholderText("Фамилия*");
-    QLineEdit *name=new QLineEdit;
+    QLineEdit *name = new QLineEdit;
     name->setPlaceholderText("Имя*");
-    QLineEdit *patronymic = new QLineEdit();
-    patronymic->setPlaceholderText("Отчество");
-    QLineEdit *phone=new QLineEdit;
+    QLineEdit *patronymic = new QLineEdit;
+    patronymic->setPlaceholderText("Отчество*");
+    QLineEdit *phone = new QLineEdit;
     phone->setPlaceholderText("Телефон*");
-    QLineEdit *passport = new QLineEdit();
-    passport->setPlaceholderText("Паспортные данные");
+    QLineEdit *email = new QLineEdit;
+    email->setPlaceholderText("Email*");
+    QLineEdit *passport = new QLineEdit;
+    passport->setPlaceholderText("Паспортные данные*");
 
     layout->addWidget(surname);
     layout->addWidget(name);
@@ -362,21 +415,66 @@ void MainWindow::onRegister()
             return;
         }
 
-        if (!validateName(surname->text())) {
-            QMessageBox::warning(this, "Ошибка", "Фамилия должна содержать только буквы!");
+        if (!validateName(surname->text()))
+        {
+            QMessageBox::warning(
+                this,
+                "Ошибка",
+                "Фамилия должна содержать только буквы!"
+                );
             return;
         }
 
-        if (!validateName(name->text())) {
-            QMessageBox::warning(this, "Ошибка", "Имя должно содержать только буквы!");
+        if (!validateName(name->text()))
+        {
+            QMessageBox::warning(
+                this,
+                "Ошибка",
+                "Имя должно содержать только буквы!"
+                );
             return;
         }
 
-        if (!validatePhone(phone->text())) {
-            QMessageBox::warning(this, "Ошибка",
-                                 "Введите корректный номер телефона!\n"
-                                 "Допустимы только цифры, +, -, пробелы и скобки.\n"
-                                 "Минимум 10 цифр.");
+        if (!validateName(patronymic->text()))
+        {
+            QMessageBox::warning(
+                this,
+                "Ошибка",
+                "Отчество должно содержать только буквы!"
+                );
+            return;
+        }
+
+        if (!validatePhone(phone->text()))
+        {
+            QMessageBox::warning(
+                this,
+                "Ошибка",
+                "Введите корректный номер телефона!\n"
+                "Минимум 10 цифр."
+                );
+            return;
+        }
+
+        if (!validateEmail(email->text()))
+        {
+            QMessageBox::warning(
+                this,
+                "Ошибка",
+                "Введите корректный email!\n"
+                "Пример: user@mail.ru"
+                );
+            return;
+        }
+
+        if (!validatePassport(passport->text()))
+        {
+            QMessageBox::warning(
+                this,
+                "Ошибка",
+                "Паспортные данные должны содержать 8-10 символов\n"
+                "Только цифры и буквы."
+                );
             return;
         }
         if (agency->findClientByPhone(phone->text().toStdString()) != -1) {
@@ -1063,4 +1161,20 @@ bool MainWindow::validatePhone(const QString& phone)
         if(ch.isDigit()) digitcount++;
     }
     return digitcount>=10;
+}
+
+bool MainWindow::validateEmail(const QString& email)
+{
+    if (email.isEmpty()) return false;
+
+    QRegularExpression regex("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$");
+    return regex.match(email).hasMatch();
+}
+
+bool MainWindow::validatePassport(const QString& passport)
+{
+    if (passport.isEmpty()) return false;
+
+    QRegularExpression regex("^[0-9A-Za-z]{8,10}$");
+    return regex.match(passport).hasMatch();
 }
