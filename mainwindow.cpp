@@ -231,6 +231,26 @@ void MainWindow::editClientInfo()
              return;
          }
 
+         if (!validateName(surname->text()))
+         {
+             QMessageBox::warning(this, "Ошибка", "Фамилия должна содержать только буквы!");
+             return;
+         }
+
+         if (!validateName(name->text()))
+         {
+             QMessageBox::warning(this, "Ошибка", "Имя должно содержать только буквы!");
+             return;
+         }
+
+         if (!validatePhone(phone->text()))
+         {
+             QMessageBox::warning(this, "Ошибка",
+                                  "Введите корректный номер телефона!\n"
+                                  "Допустимы только цифры, +, -, пробелы и скобки.\n"
+                                  "Минимум 10 цифр.");
+             return;
+         }
          client.setSurname(surname->text().toStdString());
          client.setName(name->text().toStdString());
          client.setPatronymic(patronymic->text().toStdString());
@@ -339,6 +359,24 @@ void MainWindow::onRegister()
     {
         if (surname->text().isEmpty() || name->text().isEmpty() || phone->text().isEmpty()) {
             QMessageBox::warning(this, "Ошибка", "Заполните обязательные поля(*)!");
+            return;
+        }
+
+        if (!validateName(surname->text())) {
+            QMessageBox::warning(this, "Ошибка", "Фамилия должна содержать только буквы!");
+            return;
+        }
+
+        if (!validateName(name->text())) {
+            QMessageBox::warning(this, "Ошибка", "Имя должно содержать только буквы!");
+            return;
+        }
+
+        if (!validatePhone(phone->text())) {
+            QMessageBox::warning(this, "Ошибка",
+                                 "Введите корректный номер телефона!\n"
+                                 "Допустимы только цифры, +, -, пробелы и скобки.\n"
+                                 "Минимум 10 цифр.");
             return;
         }
         if (agency->findClientByPhone(phone->text().toStdString()) != -1) {
@@ -993,4 +1031,36 @@ void MainWindow::loadServicesTable()
     }
 
     servicesTable->resizeColumnsToContents();
+}
+
+bool MainWindow::validateName(const QString& name)
+{
+    if(name.isEmpty())
+    {
+        return false;
+    }
+
+    QRegularExpression regex("^[a-zA-Zа-яА-ЯёЁ\\s\\-]+$");
+    return regex.match(name).hasMatch();
+}
+
+bool MainWindow::validatePhone(const QString& phone)
+{
+    if(phone.isEmpty())
+    {
+        return false;
+    }
+
+    QRegularExpression regex("^[\\+\\d\\s\\-\\(\\)]+$");
+    if(!regex.match(phone).hasMatch())
+    {
+        return false;
+    }
+
+    int digitcount=0;
+    for(QChar ch : phone)
+    {
+        if(ch.isDigit()) digitcount++;
+    }
+    return digitcount>=10;
 }

@@ -781,6 +781,7 @@ CMakeFiles/TourAgency.dir/mainwindow.cpp.obj: \
  C:/Qt/6.11.1/mingw_64/include/QtWidgets/qstackedwidget.h \
  C:/Qt/6.11.1/mingw_64/include/QtWidgets/QSpinBox \
  C:/Qt/6.11.1/mingw_64/include/QtWidgets/qspinbox.h \
+ C:/Qt/6.11.1/mingw_64/include/QtCore/QRegularExpression \
  C:/Qt/6.11.1/mingw_64/include/QtSql/QSqlDatabase \
  C:/Qt/6.11.1/mingw_64/include/QtSql/QSqlError \
  C:/Qt/6.11.1/mingw_64/include/QtCore/QDebug

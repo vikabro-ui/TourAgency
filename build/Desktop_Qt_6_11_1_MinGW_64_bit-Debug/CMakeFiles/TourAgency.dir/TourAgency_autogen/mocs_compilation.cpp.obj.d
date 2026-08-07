@@ -782,4 +782,5 @@ CMakeFiles/TourAgency.dir/TourAgency_autogen/mocs_compilation.cpp.obj: \
  C:/Qt/6.11.1/mingw_64/include/QtWidgets/qstackedwidget.h \
  C:/Qt/6.11.1/mingw_64/include/QtWidgets/QSpinBox \
  C:/Qt/6.11.1/mingw_64/include/QtWidgets/qspinbox.h \
+ C:/Qt/6.11.1/mingw_64/include/QtCore/QRegularExpression \
  C:/Qt/6.11.1/mingw_64/include/QtCore/qtmochelpers.h

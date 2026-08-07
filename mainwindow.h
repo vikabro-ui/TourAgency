@@ -24,7 +24,7 @@
 #include <QStackedWidget>
 #include <QSpinBox>
 #include <QHeaderView>
-
+#include <QRegularExpression>
 class MainWindow : public QMainWindow {
     Q_OBJECT
 
@@ -45,6 +45,8 @@ private:
     QPushButton* registerBtn;
     QLabel *errorLabel;
     QLabel* userStatusLabel;
+    bool validateName(const QString& name);
+    bool validatePhone(const QString& phone);
 
     //page 1
     QLabel* clientIdLabel;

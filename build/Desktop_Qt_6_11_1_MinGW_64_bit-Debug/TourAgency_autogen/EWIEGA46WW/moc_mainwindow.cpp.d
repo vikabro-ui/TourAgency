@@ -6,6 +6,7 @@ C:/Users/baras/OneDrive/Desktop/TourAgency/TourAgency/build/Desktop_Qt_6_11_1_Mi
   C:/Qt/6.11.1/mingw_64/include/QtCore/QMap \
   C:/Qt/6.11.1/mingw_64/include/QtCore/QMutex \
   C:/Qt/6.11.1/mingw_64/include/QtCore/QObject \
+  C:/Qt/6.11.1/mingw_64/include/QtCore/QRegularExpression \
   C:/Qt/6.11.1/mingw_64/include/QtCore/QString \
   C:/Qt/6.11.1/mingw_64/include/QtCore/QStringList \
   C:/Qt/6.11.1/mingw_64/include/QtCore/QVariant \
