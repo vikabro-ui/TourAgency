@@ -226,9 +226,18 @@ void MainWindow::editClientInfo()
 
     if(dialog.exec()==QDialog::Accepted)
      {
-         if (surname->text().isEmpty() || name->text().isEmpty() || phone->text().isEmpty())
-        {
-             QMessageBox::warning(this, "Ошибка", "Фамилия, имя и телефон обязательны!");
+         if (surname->text().isEmpty() ||
+             name->text().isEmpty() ||
+             patronymic->text().isEmpty() ||
+             phone->text().isEmpty() ||
+             email->text().isEmpty() ||
+             passport->text().isEmpty())
+         {
+             QMessageBox::warning(
+                 this,
+                 "Ошибка",
+                 "Все поля обязательны для заполнения!"
+                 );
              return;
          }
 
@@ -410,8 +419,18 @@ void MainWindow::onRegister()
 
     if(dialog.exec()==QDialog::Accepted)
     {
-        if (surname->text().isEmpty() || name->text().isEmpty() || phone->text().isEmpty()) {
-            QMessageBox::warning(this, "Ошибка", "Заполните обязательные поля(*)!");
+        if (surname->text().isEmpty() ||
+            name->text().isEmpty() ||
+            patronymic->text().isEmpty() ||
+            phone->text().isEmpty() ||
+            email->text().isEmpty() ||
+            passport->text().isEmpty())
+        {
+            QMessageBox::warning(
+                this,
+                "Ошибка",
+                "Все поля обязательны для заполнения!"
+                );
             return;
         }
 
